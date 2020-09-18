@@ -1,0 +1,38 @@
+// Programa una función que obtenga un número aleatorio entre 501 y 600.
+
+function numeroAleatorio() {
+  return Math.random() * 100 + 500;
+}
+
+numeroAleatorio();
+
+
+
+
+
+// Programa una función que reciba un número y evalúe si es capicúa o no.
+
+function esCapicua(num) {
+  if(typeof num !== "number") return "Ingresa un número válido";
+  
+  return (num == num.toString().split("").reverse().join("")
+    ? `El número ${num} es capicúa`
+    : `El número ${num} no es capicúa`)
+}
+
+esCapicua(121);
+
+
+
+
+// Programa una función que calcule el factorial de un número.
+
+function calcularFactorial(num) {
+  if(typeof num !== "number") return "Ingresa un número válido";
+  
+  let fact = 1;
+  for(let i = 1; i <= num; i++) fact *= i;
+  return fact;
+}
+
+calcularFactorial(5);
