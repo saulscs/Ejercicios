@@ -1,0 +1,61 @@
+// Programa una función para controlar el número de veces que se repite una palabra en un texto largo.
+
+function buscadora(texto = "", palabra = "") {
+  if(!texto) return "No ingresaste ningún texto."
+  if(!palabra) return "No indicaste una palabra a buscar."
+  if(typeof texto !== "string" || typeof palabra !== "string") return "Ingresa un texto válido."
+  
+  let arreglo = texto.split(" ");
+  let resultado = 0;
+  
+  for(let i = 0; i < arreglo.length; i++) {
+    if(arreglo[i] === palabra) {
+      resultado++
+    }
+  }
+ 
+  if (resultado === 1) {
+    return "La palabra \"" + palabra + "\" aparece un total de " + resultado + " vez";
+    } else {
+    return "La palabra \"" + palabra + "\" aparece un total de " + resultado + " veces";
+  }
+}
+
+buscadora("lorem sit", "sit")
+
+
+
+
+// Programa una función que valide si una palabra o frase dada es un palíndromo.
+
+function esPalindromo(cadena = "") {
+  if(!cadena) return "No ingresaste ningún texto."
+  if(typeof cadena !== "string") return "Ingresa un texto válido para analizar."
+  
+  let cadena1 = cadena.replace(/\s/g, "").toLowerCase();
+  let cadena2 = cadena1.split("").reverse().join("");
+  
+  if(cadena1 === cadena2) {
+    return "Tu texto es un palíndromo."
+  } else {
+    return "Tu texto no es un palíndromo."
+  }
+}
+
+esPalindromo("La ruta natural");
+
+
+
+
+// Programa una función que elimine cierto patrón de caracteres de un texto dado.
+
+function quitarCaracteres(cadena = "", patron = "") {
+  if(!cadena) return "No ingresaste ningún texto."
+  if(!patron) return "No indicaste un patrón a buscar."
+  if(typeof cadena !== "string" || typeof patron !== "string") return "Ingresa un texto válido."
+  
+  let patronAEliminar = new RegExp(patron, "g");
+  return `Resultado: "${cadena.replace(patronAEliminar, "")}"`;
+}
+
+quitarCaracteres("Mi mamá me mima", "ma");
