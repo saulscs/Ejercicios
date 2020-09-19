@@ -1,0 +1,46 @@
+// Programa una función que determine si un número es primo o no.
+
+function esPrimo(numero) {
+  if(typeof numero !== "number") return "Ingresa un número válido.";
+  if(numero < 0) return "El número a evaluar debe ser mayor a cero";
+  if(numero === 0 || numero === 1) return `${numero} no es un número primo.`;
+  if(numero === 2) return `${numero} es un número primo`;
+  if (numero % 2 === 0) return `${numero} no es un número primo`;
+  
+  // No pude con este :(
+}
+
+esPrimo(15);
+
+
+
+
+// Programa una función que determine si un número es par o impar.
+
+function esPar(numero) {
+  if(typeof numero !== "number") return "Ingresa un número válido.";
+  return (numero % 2 === 0) ? `${numero} es un número par` : `${numero} es un número impar`;
+}
+
+esPar(15)
+
+
+
+
+// Programa una función para convertir grados Celsius a Fahrenheit y viceversa.
+
+function convertirGrados(numero, grado) {
+  if(!numero) return "No indicaste la cantidad de grados a convertir"
+  if(typeof numero !== "number") return "Ingresa un número de grados válido."
+  if(!grado) return "No indicaste la escala de tus grados. Ingresa 'C' para centígrafos o 'F' para Fahrenheit."
+  
+  // Comprobando que se hayan puesto las letras apropiadas:
+  grado = grado.toLowerCase();
+  if (grado !== "c" && grado !== "f") return "Ingresa 'C' para grados centígrados o 'F' para grados Fahrenheit."
+  
+  // Conversión de °C a °F y viceversa:
+  if(grado === "c") return `${numero} grados Celsius equivalen a ${Math.round((numero * 1.8) + 32)} grados Fahrenheit.`;
+  if(grado === "f") return `${numero} grados Fahrenheit equivalen a ${Math.round((numero - 32) / 1.8)} grados Celsius.`;
+}
+
+convertirGrados(10, "F")
