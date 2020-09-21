@@ -1,0 +1,77 @@
+// Programa una función que, dada una cadena de texto, cuente el número de vocales y consonantes.
+
+function contar(cadena) {
+  if(!cadena) return "No ingresaste ninguna frase."
+  if(typeof cadena !== "string") return "Ingresa una frase válida."
+
+  cadena = cadena.toLowerCase().split("");
+  const vocales = 'aáeéiíoóuúü'.split(""),
+        consonantes = 'bcdfghjklmnñpqrstvwxyz'.split("");
+  
+  let cantVocales = 0,
+      cantConsonantes = 0;
+  
+  cadena.forEach(a => {
+    for(i = 0; i < vocales.length; i++) {
+      if(a === vocales[i]){
+        cantVocales++;
+        continue;
+      }
+    }
+
+    for(i = 0; i < consonantes.length; i++) {
+      if(a === consonantes[i]){
+        cantConsonantes++;
+        continue;
+      }
+    }
+  });
+
+  
+  return `Tu frase contiene ${cantVocales} vocal(es) y ${cantConsonantes} consonante(s).`;
+
+}
+
+contar("Tengo ganas de salir a caminar")
+
+
+
+
+// Programa una función que valide que un texto sea un nombre válido.
+
+function validarNombre(cadena) {
+
+  if(!cadena) return "No ingresaste ningún nombre a evaluar."
+  if(typeof cadena !== "string") return "Ingresa un nombre válido."
+  
+  let patron = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/i;
+  
+  if(patron.test(cadena) === false) {
+    return "El nombre que ingresaste no es válido. Por favor, revísalo y vuelve a intentar."
+  } else {
+    return "El nombre que ingresaste es válido."
+  }
+}
+
+validarNombre("Marcos, Jr.");
+
+
+
+
+// Programa una función que valide que un texto sea un email válido.
+
+function validarMail(cadena) {
+
+  if(!cadena) return "No ingresaste ningún correo a evaluar."
+  if(typeof cadena !== "string") return "Ingresa un correo electrónico válido."
+  
+  let patron = /^[a-z0-9_.-]+@[a-z0-9-]+\.[a-z]{2,}$/i;
+  
+  if(patron.test(cadena) === false) {
+    return "El correo que ingresaste no es válido. Por favor, revísalo y vuelve a intentar."
+  } else {
+    return "El correo que ingresaste es válido."
+  }
+}
+
+validarMail("mail-de.prueba@gmail.com");
