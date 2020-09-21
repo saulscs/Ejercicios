@@ -64,9 +64,9 @@ descontar(85, 20)
 
 function contarAnios(a,m,d) {
   if(!a || !m || !d) return "Ingresa la fecha en formato siguiente: AAAA,MM,DD. Por ejemplo: 2015,05,15."
-  if(typeof a !== "number") return "Ingresa un año válido. Por ejemplo: '2015'.";
-  if(typeof m !== "number") return "Ingresa un número de mes válido. Por ejemplo: '05' para mayo.";
-  if(typeof d !== "number") return "Ingresa un número de día válido. Por ejemplo: '15'.";
+  if(typeof a !== "number") return "Ingresa un año válido. Por ejemplo: 2015.";
+  if(typeof m !== "number") return "Ingresa un número de mes válido. Por ejemplo: 05 para mayo.";
+  if(typeof d !== "number") return "Ingresa un número de día válido. Por ejemplo: 15.";
   
   const meses = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   
