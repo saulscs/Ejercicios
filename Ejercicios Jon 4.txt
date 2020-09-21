@@ -1,0 +1,81 @@
+// Programa una función para convertir números de base binaria a decimal y viceversa.
+
+function convertirBase(numero, base) {
+  if(!numero) return "No has ingresado ningún número.";
+  if(typeof numero !== "number") return "Ingresa un número válido.";
+  if(numero < 1) return "Ingresa un número mayor a cero."
+  if(!base) return "Ingresa la base de tu número: 'BIN' para convertir a binario o 'DEC' para convertir a decimal."
+  base = base.toUpperCase();
+  if(base !== "DEC" && base !== "BIN") return "Base incorrecta. Ingresa 'BIN' para convertir a binario o 'DEC' para convertir a decimal."
+  
+  // Convertimos decimal a binario:
+  if(base === "BIN") {
+    let numBinario = [];
+    while(numero > 0) { 
+        numBinario.push(numero % 2)
+        numero = Math.floor(numero / 2)
+    }
+    return `Tu número en binario equivale a ${numBinario.reverse().join("")}`;
+  }
+
+  // Convertimos binario a decimal:
+  if(base === "DEC") {
+    // Convertimos el número a cadena para poder buscar una Expresión Regular:
+    numero = numero.toString()
+    // Si contiene cualquier número distinto a 0 y 1, no es un número válido:
+    if(numero.match(/[^01]/)) return "Ingresa un número binario válido.";
+    
+    let numDecimal = [];
+    let potencia = 0;
+    numero = numero.split("");
+    
+    for(let i = numero.length - 1; i >= 0; i--) {
+      numero[i] = parseInt(numero[i]) * Math.pow(2, potencia);
+      numDecimal.push(numero[i]);
+      potencia++
+    }
+    return `Tu número en decimal equivale a ${numDecimal.reduce((a, b) => a + b, 0)}`;
+  }
+}
+
+ convertirBase(11110100, "DEC");
+
+
+
+
+// Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada.
+
+function descontar(precio, descuento) {
+  if(!precio) return "Ingresa el precio del producto."
+  if(!descuento) return "Ingresa el descuento a aplicar"
+  if(typeof precio !== "number" || typeof descuento !== "number") return "Ingresa un número válido."
+  if(precio < 0 || descuento < 0) return "Ingresa un número mayor a cero.";
+  
+  descuento = descuento / 100;
+  return precio - (precio * descuento);
+}
+
+descontar(85, 20)
+
+
+
+
+// Programa una función que, dada una fecha válida, determine cuantos años han pasado hasta el día de hoy.
+
+function contarAnios(a,m,d) {
+  if(!a || !m || !d) return "Ingresa la fecha en formato siguiente: AAAA,MM,DD. Por ejemplo: 2015,05,15."
+  if(typeof a !== "number") return "Ingresa un año válido. Por ejemplo: '2015'.";
+  if(typeof m !== "number") return "Ingresa un número de mes válido. Por ejemplo: '05' para mayo.";
+  if(typeof d !== "number") return "Ingresa un número de día válido. Por ejemplo: '15'.";
+  
+  const meses = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  let diaPasado = Date.parse(`${meses[m - 1]} ${d}, ${a}`);
+  let diaActual = Date.now()
+
+  if((diaActual - diaPasado) < 0) return "Ingresa un día anterior a hoy.";
+
+  return `Desde tu fecha introducida hasta hoy, pasaron ${((diaActual - diaPasado) / 1000 / 3600 / 24 / 365).toFixed(1)} año(s)`;
+}
+
+contarAnios(2020,8,10);
