@@ -1,0 +1,49 @@
+// Programa una función que, dado un array numérico, devuelva otro array con los números elevados al cuadrado.
+
+function elevarCuadrado (arreglo) {
+  if(!arreglo) return "No has introducido ningún arreglo.";;
+  if(!(arreglo instanceof Array)) return "Por favor, introduce un arreglo válido. Ejemplo: [1, 2, 3]";
+  // Quitamos todo lo que no sea un número:
+  arreglo = arreglo.filter(e => typeof e === "number");
+  
+  return arreglo.map(e => Math.pow(e, 2))
+}
+
+elevarCuadrado([2, 3, -4, 5, 2.4, 3/5, "Hola", 4, null, false, "Adiós", 10]);
+
+
+
+
+// Programa una función que, dado un array, devuelva el número más alto y el más bajo de dicho array.
+
+function minMax(arreglo) {
+  if(!arreglo) return "No has introducido ningún arreglo.";;
+  if(!(arreglo instanceof Array)) return "Por favor, introduce un arreglo válido. Ejemplo: [1, 2, 3]";
+  
+  // Quitamos todo lo que no sea un número y lo ordenamos en forma ascendente:
+  arreglo = arreglo.filter(e => typeof e === "number").sort((a,b) => a - b)
+  
+  return `El número más bajo de tu arreglo es ${arreglo[0]} y el más grande es ${arreglo[arreglo.length - 1]}`;
+}
+
+minMax([2, 4, 7, 1, 0, -6, 12930, 8923, -99, "Hola", 9999999, -100]);
+
+
+
+
+// Programa una función que, dado un array de números, devuelva un objeto con dos arreglos: en el primero almacena los números pares y en el segundo los impares.
+
+function parImpar (arreglo) {
+  if(!arreglo) return "No has introducido ningún arreglo.";;
+  if(!(arreglo instanceof Array)) return "Por favor, introduce un arreglo válido. Ejemplo: [1, 2, 3]";
+  
+  // Quitamos todo lo que no sea un número:
+  arreglo = arreglo.filter(e => typeof e === "number");
+  
+  let Pares = arreglo.filter(e => e % 2 === 0).sort((a, b) => a - b);
+  let Impares = arreglo.filter(e => e % 2 !== 0).sort((a, b) => a - b);
+
+  return {Pares, Impares};
+}
+
+parImpar([5, 9, 15, 2, 7, 88, 1054, "Adiós", -14, 0, 44, 83]);
