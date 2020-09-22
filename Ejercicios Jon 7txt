@@ -1,0 +1,49 @@
+// Programa una función que, dado un arreglo de números, devuelva un objeto con dos arreglos. El primero tendrá los numeros ordenados en forma ascendente y el segundo de forma descendente.
+
+function ascDesc(arreglo) {
+  if(!arreglo) return "No has introducido ningún arreglo.";
+  if(!(arreglo instanceof Array)) return "Por favor, introduce un arreglo válido. Ejemplo: [1, 2, 3]";
+  if(arreglo.length === 0) return "El arreglo no puede estar vacío."
+  // Quitamos todo lo que no sea un número:
+  arreglo = arreglo.filter(e => typeof e === "number");
+  
+  let ascendente = arreglo.sort((a,b) => a - b);
+  let descendente = arreglo.sort((a,b) => b - a);
+      
+  return { ascendente, descendente };
+}
+
+ascDesc([7,5,2,7,8,6,10,-10]);
+
+
+
+
+// Programa una función que, dado un arreglo de elementos, elimine los duplicados.
+
+function noDuplicados(arreglo) {
+  if(!arreglo) return "No has introducido ningún arreglo.";
+  if(!(arreglo instanceof Array)) return "Por favor, introduce un arreglo válido. Ejemplo: [1, 2, 3]";
+  if(arreglo.length === 0) return "El arreglo no puede estar vacío."
+  
+  let set = Array.of(...new Set(arreglo));
+  return set;
+}
+
+noDuplicados(["x", 10, "x", 2, "10", 10, true, true]);
+
+
+
+
+// Programa una función que dado un arreglo de números obtenga el promedio.
+
+function promediar(arreglo) {
+  if(!arreglo) return "No has introducido ningún arreglo.";
+  if(!(arreglo instanceof Array)) return "Por favor, introduce un arreglo válido. Ejemplo: [1, 2, 3]";
+  if(arreglo.length === 0) return "El arreglo no puede estar vacío."
+  // Quitamos todo lo que no sea un número:
+  arreglo = arreglo.filter(e => typeof e === "number");
+  
+  return `El promedio de tu arreglo es: ${arreglo.reduce((a, b) => a + b) / arreglo.length}`;
+}
+
+promediar([9,8,7,6,5,4,3,2,1,0]);
