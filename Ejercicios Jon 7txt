@@ -7,8 +7,8 @@ function ascDesc(arreglo) {
   // Quitamos todo lo que no sea un número:
   arreglo = arreglo.filter(e => typeof e === "number");
   
-  let ascendente = arreglo.sort((a,b) => a - b);
-  let descendente = arreglo.sort((a,b) => b - a);
+  let ascendente = arreglo.map(e => e).sort((a,b) => a - b);
+  let descendente = arreglo.map(e => e).sort((a,b) => b - a);
       
   return { ascendente, descendente };
 }
